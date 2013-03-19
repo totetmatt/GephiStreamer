@@ -7,9 +7,7 @@ Quick use
 ======
 
 ```python
-from Node import Node
-from Edge import Edge
-from GephiStreamerManager import GephiStreamerManager
+from GephiStreamer import Node,Edge,GephiStreamerManager
 
 a = Node("A", red=1) 		# Create a node
 a.params['category']= '1'  	# add a property 
