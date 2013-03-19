@@ -2,6 +2,10 @@ GephiStreamer
 =============
 
 Python classes for streaming graph to gephi
+Install
+======
+
+Download and unzip in you python project in %base%/GephiStreamer/
 
 Quick use
 ======
