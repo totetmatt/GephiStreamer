@@ -10,12 +10,12 @@ class GraphEntity(object):
     '''
 
 
-    def __init__(self,eid, params):
+    def __init__(self,eid, property):
         '''
         Constructor
         '''
-        self.params = params
-        self.object ={eid:self.params}
+        self.property = property
+        self.object ={eid:self.property}
         
     def __str__(self):
         return "%s"%self.object  

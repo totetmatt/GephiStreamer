@@ -8,9 +8,9 @@ from Edge import Edge
 from GephiStreamerManager import GephiStreamerManager
 if __name__ == '__main__':
     a = Node("A", red=1)
-    a.params['category']= '1'
+    a.property['category']= '1'
     b = Node("B",blue=1)
-    b.params['category']= '2'
+    b.property['category']= '2'
     e = Edge('A',b,True)
     t = GephiStreamerManager()
     t.add_node(a)
