@@ -10,9 +10,9 @@ Quick use
 from GephiStreamer import Node,Edge,GephiStreamerManager
 
 a = Node("A", red=1) 		# Create a node
-a.params['category']= '1'  	# add a property 
+a.property['category']= '1'  	# add a property 
 b = Node("B",blue=1)		# Create a node
-b.params['category']= '2'	# add a property 
+b.property['category']= '2'	# add a property 
 e = Edge('A',b,True)		# Create edge, can use Node type or Id of node for Source and Destination
 t = GephiStreamerManager()  # Streamer Manager (default http://localhost:8080/workspace0)
 t.add_node(a)				
