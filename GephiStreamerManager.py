@@ -8,6 +8,7 @@ import urllib
 from GephiStreamerError import GephiStreamerError
 from Node import Node
 from Edge import Edge
+import requests
 from GraphEntity import GraphEntity
 class StackManager(object):
 
@@ -64,15 +65,17 @@ class GephiStreamerManager(object):
         for s in self.commit_flow:
             s.send(self.send)   
     def send(self,action,iGraphEntity):
-        if type(iGraphEntity) == GraphEntity:
+        if type(iGraphEntity) == Node or type(iGraphEntity) == Edge:
             postAction = {action:iGraphEntity.object}
         else:
             postAction = {action:iGraphEntity}
-        print postAction
+     
         params = json.dumps(postAction)
         aSendURL = self.name()
         
         if "127.0.0.1" in self.GEPHI_STREAM_URL or 'localhost' in self.GEPHI_STREAM_URL:
-            urllib.urlopen(aSendURL,params,proxies={})
+            r= requests.post(aSendURL, data=params)
         else:
-            urllib.urlopen(aSendURL,params,proxies=self.proxies)
+            r= requests.post(aSendURL, data=params)
+            
+            #urllib.urlopen(aSendURL,params,proxies=self.proxies)

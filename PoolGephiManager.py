@@ -23,6 +23,10 @@ class PoolGephiManager(object):
         self.ID +=1
     def remove(self,index):
         del self.MANAGERS_STACK[index]
+    def commit(self):
+        for manager in self.MANAGERS_STACK : manager.commit()   
+    def send(self,aAction,aEntity):
+        for manager in self.MANAGERS_STACK : manager.send(aAction,aEntity) 
         
     def add_node (self,entity):
         for manager in self.MANAGERS_STACK : manager.add_node(entity)
