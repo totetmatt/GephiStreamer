@@ -29,27 +29,27 @@ class StackManager(object):
 class GephiStreamerManager(object):
     
     '''
-    classdocs
+    Stream Manager for One Gephi instance (host + workspace)
     '''
-    STR_ADD_NODE = "an"
-    STR_CHANGE_NODE = "cn"
-    STR_DELETE_NODE = "dn"
+    ADD_NODE = "an"
+    CHANGE_NODE = "cn"
+    DELETE_NODE = "dn"
     
-    STR_ADD_EDGE = "ae"
-    STR_CHANGE_EDGE = "ce"
-    STR_DELETE_EDGE = "de"
+    ADD_EDGE = "ae"
+    CHANGE_EDGE = "ce"
+    DELETE_EDGE = "de"
     
-    add_node = StackManager(Node,STR_ADD_NODE)
-    change_node = StackManager(Node,STR_CHANGE_NODE)
-    delete_node = StackManager(Node,STR_DELETE_NODE)
+    add_node = StackManager(Node,ADD_NODE)
+    change_node = StackManager(Node,CHANGE_NODE)
+    delete_node = StackManager(Node,DELETE_NODE)
     
-    add_edge = StackManager(Edge,STR_ADD_EDGE)
-    change_edge = StackManager(Edge,STR_CHANGE_EDGE)
-    delete_edge = StackManager(Edge,STR_DELETE_EDGE)
+    add_edge = StackManager(Edge,ADD_EDGE)
+    change_edge = StackManager(Edge,CHANGE_EDGE)
+    delete_edge = StackManager(Edge,DELETE_EDGE)
     
     def name(self):
         return "http://%s/%s?operation=updateGraph"%(self.GEPHI_STREAM_URL,self.GEPHI_STREAM_WORKSPACE)
-    def __str__(self):
+    def ___str__(self):
         return self.name()
     def __unicode__(self):
         return self.name()

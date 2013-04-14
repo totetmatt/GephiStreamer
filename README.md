@@ -26,9 +26,9 @@ t.add_node(b)
 t.add_edge(e)
 t.commit()					# Send everything > Group streaming by action (e.g if you have 1000 nodes to add, it will send only one message to gephi)
 """ Or Alternative
-t.send(GephiStreamerManager.STR_ADD_NODE,a)					# send a to gephi
-t.send(GephiStreamerManager.STR_ADD_NODE,b)					# send b to gephi
-t.send(GephiStreamerManager.STR_ADD_EDGE,e)					# send e to gephi
+t.send(GephiStreamerManager.ADD_NODE,a)					# send a to gephi
+t.send(GephiStreamerManager.ADD_NODE,b)					# send b to gephi
+t.send(GephiStreamerManager.ADD_EDGE,e)					# send e to gephi
 
 """
 ```
@@ -40,13 +40,13 @@ from GephiStreamer import Node,Edge,GephiStreamerManager
 t = GephiStreamerManager()  # Streamer Manager (default http://localhost:8080/workspace0)
 
 a = Node("A", red=1)   
-t.send(GephiStreamerManager.STR_ADD_NODE,a)  				
+t.send(GephiStreamerManager.ADD_NODE,a)  				
 b = Node("B",blue=1)		
 e = Edge('A',b,True)		
 
 
-t.send(GephiStreamerManager.STR_ADD_NODE,b)    			# send b to gephi
-t.send(GephiStreamerManager.STR_ADD_EDGE,e)    			# send e to gephi
+t.send(GephiStreamerManager.ADD_NODE,b)    			# send b to gephi
+t.send(GephiStreamerManager.ADD_EDGE,e)    			# send e to gephi
 
 ```
 This mode is usefull for quick implementation.

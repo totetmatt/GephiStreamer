@@ -6,7 +6,7 @@ Created on 18 mars 2013
 
 class GraphEntity(object):
     '''
-    classdocs
+    Abstract Class for Nodes and Edges
     '''
 
 
@@ -22,9 +22,9 @@ class GraphEntity(object):
       
     def colorHex(self,r=None,g=None,b=None):
         '''
-        Change Color : Ask un Hexa (more 'natural')
+        Change Color : Ask Hexa (more 'natural')
         '''
-        if r : self.params['r']    =   float(r)/255
-        if g : self.params['g']    =   float(g)/255
-        if b : self.params['b']    =   float(b)/255
+        if r : self.property['r']    =   float(r)/255
+        if g : self.property['g']    =   float(g)/255
+        if b : self.property['b']    =   float(b)/255
     

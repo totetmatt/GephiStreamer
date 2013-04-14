@@ -7,7 +7,7 @@ from GephiStreamerError  import GephiStreamerError
 from GephiStreamerManager import GephiStreamerManager
 class PoolGephiManager(object):
     '''
-    classdocs
+    PoolGephiManager allow to manage easily multiple GephiStreamerManager.
     '''
 
     MANAGERS_STACK = []
