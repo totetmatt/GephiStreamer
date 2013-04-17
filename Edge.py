@@ -25,7 +25,7 @@ class Edge(GraphEntity):
             if directed:
                 eid="%s-->%s"%(source,target)
             else:
-                eid="%s--%s%"(source,target)
+                eid="%s--%s%"%(source,target)
         
         GraphEntity.__init__(self, eid,   {"source":source,"target":target,"weight":weight,"directed":directed,"label":label,"r":red,"g":green,"b":blue})    
 
