@@ -76,3 +76,20 @@ Example: I want to create 1 node that have a edge to 10 000 other nodes
 
 * Direct Send Mode : will operate 20 001 calls (10 001 calls for nodes, 10 000 for edges)
 * Transaction Mode : will operate 2 calls (1 for add 10 001 nodes, 1 for add 10 000 edges)
+
+Gephi Instance
+=====
+Default Gephi instance targeted is localhost on port 8080
+```python
+t = GephiStreamerManager()
+```
+
+To stream a remote Gephi instance use the argument iGephiUrl
+```python
+t = GephiStreamerManager(iGephiUrl='ip_or_machine_name:myport')
+```
+
+To stream to a different workspace, usr the argument iGephiWorkspace
+```python
+t = GephiStreamerManager(iGephiWorkspace='workspace1')
+```
