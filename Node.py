@@ -20,5 +20,5 @@ if __name__ == '__main__':
     n=  Node('testId',size=10)
     print n
     
-    n.params['hello']='world'
+    n.property['hello']='world'
     print n

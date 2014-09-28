@@ -26,6 +26,10 @@ class StackManager(object):
                 iSendMethod(self.header,dict(self.stack))
 
                 del self.stack[:]
+        def reset(self):
+            del self.stack[:]
+        def action(self):
+            return {self.header:dict(self.stack)}
 class GephiStreamerManager(object):
     
     '''
@@ -62,20 +66,36 @@ class GephiStreamerManager(object):
         self.proxies = {}
         self.commit_flow = [self.add_node,self.add_edge,self.change_edge,self.change_node,self.delete_edge,self.delete_node]
     def commit(self):
+        metaAction = {}
         for s in self.commit_flow:
-            s.send(self.send)   
-    def send(self,action,iGraphEntity):
-        if type(iGraphEntity) == Node or type(iGraphEntity) == Edge:
-            postAction = {action:iGraphEntity.object}
-        else:
-            postAction = {action:iGraphEntity}
-     
-        params = json.dumps(postAction)
+            metaAction.update(s.action())
+            s.reset() 
+        self.send(metaAction)    
+            
+    def send(self,action):
+        params = json.dumps(action)
         aSendURL = self.name()
         
         if "127.0.0.1" in self.GEPHI_STREAM_URL or 'localhost' in self.GEPHI_STREAM_URL:
             r= requests.post(aSendURL, data=params)
         else:
             r= requests.post(aSendURL, data=params)
+    def sendEntityAction(self,action,iGraphEntity):
+        if type(iGraphEntity) == Node or type(iGraphEntity) == Edge:
+            postAction = {action:iGraphEntity.object}
+        else:
+            postAction = {action:iGraphEntity}
+        
+        self.send(postAction)
             
-            #urllib.urlopen(aSendURL,params,proxies=self.proxies)
+if __name__ == '__main__':     
+    a = Node("A", red=1)        # Create a node
+    a.property['category']= '1'     # add a property 
+    b = Node("B",blue=1)        # Create a node
+    b.property['category']= '2' # add a property 
+    e = Edge('A',b,True)        # Create edge, can use Node type or Id of node for Source and Destination
+    t = GephiStreamerManager()  # Streamer Manager (default http://localhost:8080/workspace0)
+    t.add_node(a)               
+    t.add_node(b)
+    t.add_edge(e)
+    t.commit()     
