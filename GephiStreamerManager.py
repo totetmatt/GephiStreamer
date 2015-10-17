@@ -18,7 +18,7 @@ class StackManager(object):
             self.header = iHeaderAction
         def __call__(self, iGraphEntity):
             if type(iGraphEntity) == self.type:
-                self.stack.append(iGraphEntity.object.items()[0])
+                self.stack.append(next(iter(iGraphEntity.object.items())))
             else:
                 raise GephiStreamerError("Should pass a %s"%self.type)
         def send(self,iSendMethod):

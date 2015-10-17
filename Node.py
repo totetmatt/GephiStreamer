@@ -18,7 +18,7 @@ class Node(GraphEntity):
 
 if __name__ == '__main__': 
     n=  Node('testId',size=10)
-    print n
+    print(n)
     
     n.property['hello']='world'
-    print n
+    print(n)

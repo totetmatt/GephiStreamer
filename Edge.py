@@ -17,9 +17,9 @@ class Edge(GraphEntity):
         Constructor
         '''
         if type(source)==Node:
-            source=source.object.keys()[0]
+            source=next(iter(source.object.keys()))
         if type(target)==Node:   
-            target=target.object.keys()[0]
+            target=next(iter(target.object.keys()))
             
         if not eid:
             if directed:
