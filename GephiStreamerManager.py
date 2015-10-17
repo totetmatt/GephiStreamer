@@ -20,7 +20,7 @@ class StackManager(object):
             if type(iGraphEntity) == self.type:
                 self.stack.append(next(iter(iGraphEntity.object.items())))
             else:
-                raise GephiStreamerError("Should pass a %s"%self.type)
+                raise GephiStreamerError("Should pass a {}".format(self.type))
         def send(self,iSendMethod):
             if self.stack:
                 iSendMethod(self.header,dict(self.stack))
@@ -52,7 +52,7 @@ class GephiStreamerManager(object):
     delete_edge = StackManager(Edge,DELETE_EDGE)
     
     def name(self):
-        return "http://%s/%s?operation=updateGraph"%(self.GEPHI_STREAM_URL,self.GEPHI_STREAM_WORKSPACE)
+        return "http://{host}/{workspace}?operation=updateGraph".format(host=self.GEPHI_STREAM_URL,workpace=self.GEPHI_STREAM_WORKSPACE)
     def ___str__(self):
         return self.name()
     def __unicode__(self):
