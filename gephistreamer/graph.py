@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__all__ = ['Node','Edge']
+
 class Entity(object):
     '''
     Abstract Class for Nodes and Edges
@@ -20,24 +25,27 @@ class Entity(object):
         if g : self.property['g']    =   float(g)/255
         if b : self.property['b']    =   float(b)/255
 
+    def json(self):
+        return self.object
+
 class Node(Entity):
     '''
     Node object
     '''
-    def __init__(self,eid,label=None, size=1, x=0, y=0, z=0, red=0.5, green=0.5, blue=0.5):
+    def __init__(self,eid,label=None, size=1, x=0, y=0, z=0, red=0.5, green=0.5, blue=0.5, **kwargs):
         '''
         Constructor
         '''
         if not label:
             label = eid
-        GraphEntity.__init__(self, eid,  {"label":label,"size":size,"x":x,"y":y,"z":z,"r":red,"g":green,"b":blue})    
+        Entity.__init__(self, eid, dict({"label":label,"size":size,"x":x,"y":y,"z":z,"r":red,"g":green,"b":blue}, **kwargs) )    
 
-class Edge(GraphEntity):
+class Edge(Entity):
     '''
     Edge object
     kwargs [label, size, x, y, z, red, green, blue]
     '''
-    def __init__(self, source, target, directed,eid=None, weight=1, label="", red=0.5, green=0.5, blue=0.5):
+    def __init__(self, source, target, directed=True,eid=None, weight=1, label="", red=0.5, green=0.5, blue=0.5, **kwargs):
         '''
         Constructor
         '''
@@ -49,7 +57,7 @@ class Edge(GraphEntity):
         if not eid:
             eid = self._generate_id(source,target,directed)
         
-        GraphEntity.__init__(self, eid,   {"source":source,"target":target,"weight":weight,"directed":directed,"label":label,"r":red,"g":green,"b":blue})    
+        Entity.__init__(self, eid, dict({"source":source,"target":target,"weight":weight,"directed":directed,"label":label,"r":red,"g":green,"b":blue},**kwargs))    
     
     def _generate_id(self,source,target,directed):
         return "{source}--{direction}{target}".format(source=source,

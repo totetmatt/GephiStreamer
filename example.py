@@ -1,17 +1,3 @@
-GephiStreamer
-=============
-
-Python classes for streaming graph to gephi
-
-Install
-======
-
-`pip install gephistreamer`
-
-Quick use
-======
-
-```python
 # Basic import
 from gephistreamer import graph
 from gephistreamer import streamer
@@ -28,9 +14,6 @@ node_b = graph.Node("B")
 node_b.property['custom_property']=2
 
 # Add the node to the stream
-# you can also do it one by one or via a list
-# l = [node_a,node_b]
-# stream.add_node(*l)
 stream.add_node(node_a,node_b)
 
 # Create edge 
@@ -42,16 +25,3 @@ stream.add_edge(edge_ab)
 
 # Send the current graph (it send the data to gephi and delete it)
 stream.commit()
-```
-How to
-=====
-
-Use the `Streamer` class to describe the action to perform:
-* add_node
-* change_node
-* delete_node
-* add_edge
-* change_edge
-* delete_edge
-
-the `.commit()` method of the `Streamer` class will trigger the send of data to Gephi and reset all actions.
