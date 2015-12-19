@@ -22,14 +22,11 @@ setup(
     install_requires=[
           'requests',
       ],
-      
+
     classifiers=[
         "Programming Language :: Python",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3.4",
         "Topic :: Communications",
-        "Topic :: Graph",
-        "Topic :: Gephi",
-        "Topic :: Stream",
     ],
 )
