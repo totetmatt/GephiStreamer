@@ -55,3 +55,6 @@ Use the `Streamer` class to describe the action to perform:
 * delete_edge
 
 the `.commit()` method of the `Streamer` class will trigger the send of data to Gephi and reset all actions.
+
+Don't forget to have Gephi running with the plugin [Graph Streaming](https://marketplace.gephi.org/plugin/graph-streaming/) installed and active in "Master mode".
+![Master mode](http://matthieu-totet.fr/Koumin/wp-content/uploads/2013/07/ScreenHunter_01-Jul.-30-08.39.jpg)
