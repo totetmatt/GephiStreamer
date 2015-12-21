@@ -38,14 +38,21 @@ class Node(Entity):
         '''
         if not label:
             label = eid
-        Entity.__init__(self, eid, dict({"label":label,"size":size,"x":x,"y":y,"z":z,"r":red,"g":green,"b":blue}, **kwargs) )    
+        Entity.__init__(self, eid, dict({"label":label,
+                                         "size":size,
+                                         "x":x,
+                                         "y":y,
+                                         "z":z,
+                                         "r":red,
+                                         "g":green,
+                                         "b":blue}, **kwargs) )    
 
 class Edge(Entity):
     '''
     Edge object
     kwargs [label, size, x, y, z, red, green, blue]
     '''
-    def __init__(self, source, target, directed=True,eid=None, weight=1, label="", red=0.5, green=0.5, blue=0.5, **kwargs):
+    def __init__(self, source, target, directed=True, kind="", eid=None, weight=1, label="", red=0.5, green=0.5, blue=0.5, **kwargs):
         '''
         Constructor
         '''
@@ -57,7 +64,15 @@ class Edge(Entity):
         if not eid:
             eid = self._generate_id(source,target,directed)
         
-        Entity.__init__(self, eid, dict({"source":source,"target":target,"weight":weight,"directed":directed,"label":label,"r":red,"g":green,"b":blue},**kwargs))    
+        Entity.__init__(self, eid, dict({"source":source,
+                                         "target":target,
+                                         "weight":weight,
+                                         "kind":kind,
+                                         "directed":directed,
+                                         "label":label,
+                                         "r":red,
+                                         "g":green,
+                                         "b":blue},**kwargs))    
     
     def _generate_id(self,source,target,directed):
         return "{source}--{direction}{target}".format(source=source,
