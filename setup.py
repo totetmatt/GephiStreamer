@@ -21,7 +21,7 @@ setup(
     
     install_requires=[
           'requests',
-          'websocket-client'
+          'ws4py'
       ],
 
     classifiers=[

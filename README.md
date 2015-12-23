@@ -17,8 +17,9 @@ from gephistreamer import graph
 from gephistreamer import streamer
 
 # Create a Streamer
-# adapt if needed : streamer.GephiREST(hostname="localhost", port=8080, workspace="workspace0")
-stream = streamer.Streamer(streamer.GephiREST())
+# adapt if needed : streamer.GephiWS(hostname="localhost", port=8080, workspace="workspace0")
+# You can also use REST call with GephiREST (a little bit slower than Websocket)
+stream = streamer.Streamer(streamer.GephiWS())
 
 # Create a node with a custom_property
 node_a = graph.Node("A",custom_property=1)
@@ -37,11 +38,6 @@ stream.add_node(node_a,node_b)
 # You can also use the id of the node :  graph.Edge("A","B",custom_property="hello")
 edge_ab = graph.Edge(node_a,node_b,custom_property="hello")
 
-# Add the edge to the stream
-stream.add_edge(edge_ab)
-
-# Send the current graph (it send the data to gephi and delete it)
-stream.commit()
 ```
 How to
 =====
@@ -54,7 +50,26 @@ Use the `Streamer` class to describe the action to perform:
 * change_edge
 * delete_edge
 
-the `.commit()` method of the `Streamer` class will trigger the send of data to Gephi and reset all actions.
-
 Don't forget to have Gephi running with the plugin [Graph Streaming](https://marketplace.gephi.org/plugin/graph-streaming/) installed and active in "Master mode".
 ![Master mode](http://matthieu-totet.fr/Koumin/wp-content/uploads/2013/07/ScreenHunter_01-Jul.-30-08.39.jpg)
+
+GephiWS
+=====
+
+The GephiWS class communicates with Gephi as Websocket call. 
+
+GephiREST
+=====
+
+The GephiREST class communicates with Gephi as REST call. 
+
+
+Auto commit
+=====
+By default, all action will trigger a "commit" and send information to Gephi. You still 
+can use the old way by requiering a 
+```python
+stream = streamer.Streamer(streamer.GephiREST(),auto_commit=False)
+[.. actions ..]
+stream.commit() # Will send all actions buffered to Gephi 
+```
