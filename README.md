@@ -2,6 +2,7 @@ GephiStreamer
 =============
 
 Python classes for streaming graph to gephi
+![Demo](http://matthieu-totet.fr/Koumin/wp-content/uploads/2015/12/GephiStreamDemo.gif)
 
 Install
 ======
