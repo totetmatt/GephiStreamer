@@ -4,7 +4,7 @@ from gephistreamer import streamer
 
 # Create a Streamer
 # adapt if needed : streamer.GephiREST(hostname="localhost", port=8080, workspace="workspace0")
-stream = streamer.Streamer(streamer.GephiREST())
+stream = streamer.Streamer(streamer.GephiREST(),auto_commit=True)
 
 # Create a node with a custom_property
 node_a = graph.Node("A",custom_property=1)
@@ -24,4 +24,3 @@ edge_ab = graph.Edge(node_a,node_b,custom_property="hello")
 stream.add_edge(edge_ab)
 
 # Send the current graph (it send the data to gephi and delete it)
-stream.commit()
