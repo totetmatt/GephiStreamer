@@ -22,3 +22,4 @@ stream.add_node(node_a,node_b)
 # Create edge 
 # You can also use the id of the node :  graph.Edge("A","B",custom_property="hello")
 edge_ab = graph.Edge(node_a,node_b,custom_property="hello")
+stream.add_edge(edge_ab)
