@@ -88,7 +88,7 @@ class StackManager:
             return json.dumps({self.header:dict(self.stack)})
 # Gephi Streaming via REST calls
 class GephiREST:
-    def __init__(self, hostname="localhost", port=8080, workspace="workspace0"):
+    def __init__(self, hostname="localhost", port=8080, workspace="workspace1"):
         self.hostname  = hostname
         self.port      = port
         self.workspace = workspace
