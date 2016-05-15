@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='GephiStreamer',
  
-    version="2.0.2",
+    version="2.0.3",
  
     packages=['gephistreamer'],
  
@@ -21,7 +21,8 @@ setup(
     
     install_requires=[
           'requests',
-          'ws4py'
+          'ws4py',
+          'enum34'
       ],
 
     classifiers=[
